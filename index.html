@@ -35,29 +35,12 @@
             // Convert player choice to a number
             let playerChoiceNumber = getChoiceNumber(playerSelection);
             // compare pc to cc to find winner
-            let winner = isPlayerWinner(playerChoiceNumber, computerChoice);
+            let outcome = isPlayerWinner(playerChoiceNumber, computerChoice);
             // get cc in text
             let computerChoiceText = getChoiceText(computerChoice);
             // Display who won as "You win! x beats y" or "You lose! x beats y"
-            
-            let roundResult;
-
-            switch (winner) {
-                
-                case 'playerWins':
-                roundResult = 'You win! ' + playerSelection + ' beats ' + computerChoiceText;
-                break;
-
-                case 'playerLoses':
-                roundResult = 'You lose! ' + computerChoiceText + ' beats ' + playerSelection;
-                break;
-
-                case 'draw':
-                roundResult = 'Draw! You both picked ' + playerSelection;
-                break;
-            }
-            return roundResult;
-
+            let whoWon = whoWonMessage(outcome, playerSelection, computerChoiceText)
+            return whoWon;
         }
 
         function startRound() {
@@ -108,8 +91,24 @@
 
         }
 
-        function whoWonMessage(winner) {
+        function whoWonMessage(outcome, playerSelection, computerChoiceText) {
+            let roundResult;
 
+            switch (outcome) {
+                
+                case 'playerWins':
+                roundResult = 'You win! ' + playerSelection + ' beats ' + computerChoiceText;
+                break;
+
+                case 'playerLoses':
+                roundResult = 'You lose! ' + computerChoiceText + ' beats ' + playerSelection;
+                break;
+
+                case 'draw':
+                roundResult = 'Draw! You both picked ' + playerSelection;
+                break;
+            }
+            return roundResult;
         }
     </script>
 </body>
