@@ -50,6 +50,35 @@
             console.log(roundWinner);
         }
 
+        function fullGame() {
+            let winTally = 0, lossTally = 0, drawTally = 0;
+            for (let count = 1; count <= 5; count++) {
+                let playerChoice = prompt('Enter Rock, Paper, or Scissors.', '');
+                let computerChoice = computerPlay();
+                let roundWinner = singleRound(playerChoice, computerChoice);
+                console.log(roundWinner);
+                if (roundWinner.includes('win')) {
+                    winTally += 1;
+                } else if (roundWinner.includes('lose')) {
+                    lossTally += 1;
+                } else if (roundWinner.includes('Draw')) {
+                    drawTally += 1; //Draw tally doesn't actually matter
+                }
+                console.log('Wins: ' + winTally);
+                console.log('Losses: ' + lossTally);
+                console.log('Draws: ' + drawTally);
+            }
+            if (winTally > lossTally) {
+                console.log('You win the game with ' + winTally + ' rounds won!');
+            }
+            else if (lossTally > winTally) {
+                console.log('You lose the game with ' + lossTally + ' rounds lost.');
+
+            } else {
+                console.log('Draw! You both won ' + winTally + ' rounds.');
+            }
+        }
+
         function getChoiceNumber(playerChoice) {
             let playerChoiceLower = playerChoice.toLowerCase();
             let playerChoiceNumber;
