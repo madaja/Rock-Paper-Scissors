@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<head>
+    <title>Rock, Paper, Scissors</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <script>
+        function computerPlay() {
+            let computerChoice = Math.floor(Math.random() * 3) + 1; 
+            console.log('Computer choice: ' + computerChoice);
+            return computerChoice;
+        }
+
+        function getChoiceText(choice) {
+            let computerChoiceText;
+            switch (choice) {
+                case 1:
+                computerChoiceText = 'Rock';
+                break;
+
+                case 2:
+                computerChoiceText = 'Paper';
+                break;
+
+                case 3:
+                computerChoiceText = 'Scissors';
+                break;
+
+            }
+            return computerChoiceText;
+        }
+
+        function singleRound(playerSelection, computerSelection) {
+            let computerChoice = computerSelection
+            // Convert player choice to a number
+            let playerChoiceNumber = getChoiceNumber(playerSelection);
+            // compare pc to cc to find winner
+            let winner = isPlayerWinner(playerChoiceNumber, computerChoice);
+            // get cc in text
+            let computerChoiceText = getChoiceText(computerChoice);
+            // Display who won as "You win! x beats y" or "You lose! x beats y"
+            
+            let roundResult;
+
+            switch (winner) {
+                
+                case 'playerWins':
+                roundResult = 'You win! ' + playerSelection + ' beats ' + computerChoiceText;
+                break;
+
+                case 'playerLoses':
+                roundResult = 'You lose! ' + computerChoiceText + ' beats ' + playerSelection;
+                break;
+
+                case 'draw':
+                roundResult = 'Draw! You both picked ' + playerSelection;
+                break;
+            }
+            return roundResult;
+
+        }
+
+        function startRound() {
+            let playerChoice = prompt('Enter Rock, Paper, or Scissors.', '');
+            let computerChoice = computerPlay();
+            let roundWinner = singleRound(playerChoice, computerChoice);
+            console.log(roundWinner);
+        }
+
+        function getChoiceNumber(playerChoice) {
+            let playerChoiceLower = playerChoice.toLowerCase();
+            let playerChoiceNumber;
+            switch (playerChoiceLower) {
+                case 'rock':
+                playerChoiceNumber = 1;
+                break;
+
+                case 'paper':
+                playerChoiceNumber = 2;
+                break;
+
+                case 'scissors':
+                playerChoiceNumber = 3;
+                break;
+
+                default:
+                alert('Error: did not enter Rock, Paper, or Scissors');
+                break;
+
+            }
+            console.log('Player Choice: ' + playerChoiceNumber);
+            return playerChoiceNumber;
+        }
+
+        function isPlayerWinner(playerSelection, computerSelection) {
+            let outcome = playerSelection - computerSelection;
+            console.log(outcome);
+            let playerWon;
+            if (outcome === 1 || outcome === -2) {
+                playerWon = 'playerWins';
+            } else if (outcome === -1 || outcome === 2) {
+                playerWon = 'playerLoses';
+            } else if (outcome === 0) {
+                playerWon = 'draw';
+            }
+
+            return playerWon;
+
+        }
+
+        function whoWonMessage(winner) {
+
+        }
+    </script>
+</body>
