@@ -7,7 +7,6 @@
     <script>
         function computerPlay() {
             let computerChoice = Math.floor(Math.random() * 3) + 1; 
-            console.log('Computer choice: ' + computerChoice);
             return computerChoice;
         }
 
@@ -47,7 +46,7 @@
             let playerChoice = prompt('Enter Rock, Paper, or Scissors.', '');
             let computerChoice = computerPlay();
             let roundWinner = singleRound(playerChoice, computerChoice);
-            console.log(roundWinner);
+            
         }
 
         function fullGame() {
@@ -56,7 +55,7 @@
                 let playerChoice = prompt('Enter Rock, Paper, or Scissors.', '');
                 let computerChoice = computerPlay();
                 let roundWinner = singleRound(playerChoice, computerChoice);
-                console.log(roundWinner);
+                
                 if (roundWinner.includes('win')) {
                     winTally += 1;
                 } else if (roundWinner.includes('lose')) {
@@ -64,9 +63,7 @@
                 } else if (roundWinner.includes('Draw')) {
                     drawTally += 1; //Draw tally doesn't actually matter
                 }
-                console.log('Wins: ' + winTally);
-                console.log('Losses: ' + lossTally);
-                console.log('Draws: ' + drawTally);
+                
             }
             if (winTally > lossTally) {
                 console.log('You win the game with ' + winTally + ' rounds won!');
@@ -100,13 +97,13 @@
                 break;
 
             }
-            console.log('Player Choice: ' + playerChoiceNumber);
+            
             return playerChoiceNumber;
         }
 
         function isPlayerWinner(playerSelection, computerSelection) {
             let outcome = playerSelection - computerSelection;
-            console.log(outcome);
+            
             let playerWon;
             if (outcome === 1 || outcome === -2) {
                 playerWon = 'playerWins';
