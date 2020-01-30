@@ -32,10 +32,7 @@
 
         function computerPlay() {
             let computerChoice = Math.floor(Math.random() * 3) + 1; 
-<<<<<<< HEAD
-=======
             //console.log('Computer choice: ' + computerChoice);
->>>>>>> RPSUI
             return computerChoice;
         }
 
@@ -76,23 +73,9 @@
             let playerChoice = this.id;
             let computerChoice = computerPlay();
             let roundWinner = singleRound(playerChoice, computerChoice);
-<<<<<<< HEAD
-            
-        }
-
-        function fullGame() {
-            let winTally = 0, lossTally = 0, drawTally = 0;
-            for (let count = 1; count <= 5; count++) {
-                let playerChoice = prompt('Enter Rock, Paper, or Scissors.', '');
-                let computerChoice = computerPlay();
-                let roundWinner = singleRound(playerChoice, computerChoice);
-                
-                if (roundWinner.includes('win')) {
-=======
             console.log('debug: this is roundWinner: ' + roundWinner);
             msg.textContent = roundWinner;
             if (roundWinner.includes('win')) {
->>>>>>> RPSUI
                     winTally += 1;
                     pscore.textContent = winTally;
                 } else if (roundWinner.includes('lose')) {
@@ -100,16 +83,11 @@
                     cscore.textContent = lossTally;
                 } /* else if (roundWinner.includes('Draw')) {
                     drawTally += 1; //Draw tally doesn't actually matter
-<<<<<<< HEAD
-                }
-                
-=======
                 } */
             console.log(winTally);
             console.log(lossTally);
             if (winTally === 5) {
                 resetScore('win');
->>>>>>> RPSUI
             }
             if (lossTally === 5) {
                 resetScore('lose');
@@ -154,11 +132,7 @@
 
         function isPlayerWinner(playerSelection, computerSelection) {
             let outcome = playerSelection - computerSelection;
-<<<<<<< HEAD
-            
-=======
             //console.log(outcome);
->>>>>>> RPSUI
             let playerWon;
             if (outcome === 1 || outcome === -2) {
                 playerWon = 'playerWins';
